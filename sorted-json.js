@@ -35,20 +35,7 @@ exports.stringify = function(obj, compareFunction) {
         var k = keyList[i];
         var v = exports.stringify(obj[k], compareFunction);
 
-        if (typeof v == 'string') {
-          if (typeof obj[k] == 'string') {
-            parts.push('"' + k + '":"' + v + '"');
-          }
-          else if (typeof obj[k] == 'object') {
-            parts.push('"' + k + '":' + v);
-          }
-        }
-        else if (typeof v == 'number') {
-          parts.push('"' + k + '":' + v);
-        }
-        else if (typeof v == 'boolean') {
-          parts.push('"' + k + '":' + v);
-        }
+        parts.push('"' + k + '":' + v);
       }
       return '{' + parts.join(',') + '}';
     }
