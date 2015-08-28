@@ -4,7 +4,7 @@ a sorting-keys-versiong for `JSON.stringify`
 ## Quick Example
 
 ```js
-sortedJSON = require('sorted-json-js');
+sortedJSON = require('sorted-json');
 
 obj = {
   d: [1.1, false, 'abc'],
