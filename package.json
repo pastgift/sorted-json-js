@@ -1,0 +1,24 @@
+{
+  "name": "sorted-json",
+  "version": "0.1.0",
+  "description": "a sorting-keys-versiong for `JSON.stringify`",
+  "main": "sorted-json.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pastgift/sorted-json-js"
+  },
+  "keywords": [
+    "json",
+    "stringify",
+    "sort"
+  ],
+  "author": {
+    "name": "Yiling Zhou",
+    "email": "pastgift@gmail.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pastgift/sorted-json-js/issues"
+  },
+  "homepage": "https://github.com/pastgift/sorted-json-js"
+}
