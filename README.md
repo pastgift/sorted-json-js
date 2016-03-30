@@ -1,5 +1,5 @@
 # sorted-json-js
-a sorting-keys-versiong for `JSON.stringify`
+a sorting-keys-version for `JSON.stringify`
 
 ## Quick Example
 
