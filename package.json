@@ -1,7 +1,6 @@
 {
   "name": "sorted-json",
-  "version": "0.2.0",
-  "description": "a sorting-keys-versiong for `JSON.stringify`",
+  "version": "0.2.1",
   "main": "sorted-json.js",
   "devDependencies": {
     "mocha": "2.0.1"
