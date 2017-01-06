@@ -1,33 +1,96 @@
 # sorted-json-js
-a sorting-keys-version for `JSON.stringify`
 
-## Quick Example
+Sort keys and array elements in a JSON.
+
+## Quick Example:
 
 ```js
-sortedJSON = require('sorted-json');
+var sortedJSON = require('./sorted-json');
 
-obj = {
-  d: [1.1, false, 'abc'],
-  c: {
-    cc: [1, true, function(){}],
-    cb: 2,
-    ca: 1
+var obj = {
+  numberArray: [3, 1, 2],
+  anotherJSON: {
+    stringArray: ['cat', 'book', 'apple'],
+    numberA: 2,
+    numberB: 1
   },
-  b: 2,
-  a: 1
+  number1: 2,
+  number2: 1
 };
 
-console.log(sortedJSON.stringify(obj));
+var sortedObj = sortedJSON.sortify(obj);
+console.log(JSON.stringify(sortedObj, null, '  '));
 
-// Output: `{"a":1,"b":2,"c":{"ca":1,"cb":2,"cc":[1,true,"<FUNCTION>"]},"d":[1.1,false,"abc"]}`
+/* Output:
+  {
+    "anotherJSON": {
+      "numberA": 2,
+      "numberB": 1,
+      "stringArray": [
+        "apple",
+        "book",
+        "cat"
+      ]
+    },
+    "number1": 2,
+    "number2": 1,
+    "numberArray": [
+      1,
+      2,
+      3
+    ]
+  }
+*/
 ```
 
-### Install:
+# Functions:
+
+### sortify(obj [, options])
+
+###### obj (object)
+
+The object to sort
+
+###### options (object)
+
+An object which defaults to
+
+```js
+{
+  sortBy   : null,  // Specifies a function that defines the sort order. Same to `compareFunction` parameter in `Array.prototype.sort(compareFunction)`
+  sortKey  : true,  // Sort the keys in `obj` or not
+  sortArray: true,  // Sort the array elements in `obj or not
+
+  stringify: false, // Output the stringified `obj` or not (Using `JSON.stringify()`)
+  replacer : null,  // Parameter for `JSON.stringify()`
+  space    : null,  // Parameter for `JSON.stringify()`
+}
+```
+
+### stringify(obj, compareFunction) ***DEPRECATED***
+
+###### obj (object)
+
+The object to sort
+
+###### compareFunction (function)
+
+Specifies a function that defines the sort order. Same to `compareFunction` parameter in `Array.prototype.sort(compareFunction)`.
+
+# Install:
+
 ```shell
 npm install sorted-json
 ```
 
-### License
+# Test:
+
+```shell
+npm test
+```
+
+# License
+
 [MIT](LICENSE)
 
 [downloads-image]: http://img.shields.io/npm/dm/sorted-json.svg
