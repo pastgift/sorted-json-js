@@ -3,7 +3,7 @@
 var DEBUG = false;
 var NON_SORTABLE_TYPES = ['undefined', 'string', 'number', 'boolean', 'function'];
 var DEFAULT_SORT_OPTIONS = {
-  sortby   : null,
+  sortBy   : null,
   sortKey  : true,
   sortArray: true,
 
@@ -21,7 +21,7 @@ var _sortify = function(obj, options) {
 
   if (Array.isArray(obj)) {
     if (options.sortArray === true) {
-      obj.sort(options.sortby);
+      obj.sort(options.sortBy);
     }
 
     for (var i = 0; i < obj.length; i++) {
@@ -38,7 +38,7 @@ var _sortify = function(obj, options) {
       for (var k in obj) {
         keyList.push(k);
       }
-      keyList.sort(options.sortby);
+      keyList.sort(options.sortBy);
 
       for (var i = 0; i < keyList.length; i++) {
         var k = keyList[i];
