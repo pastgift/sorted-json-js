@@ -5,7 +5,7 @@ var NON_SORTABLE_TYPES = ['undefined', 'string', 'number', 'boolean', 'function'
 var DEFAULT_SORT_OPTIONS = {
   sortBy   : null,
   sortKey  : true,
-  sortArray: true,
+  sortArray: false,
 
   stringify: false,
   replacer : null,
@@ -61,13 +61,14 @@ var _sortify = function(obj, options) {
 
 exports.sortify = function(obj, options) {
   if (!options) {
-    options = DEFAULT_SORT_OPTIONS;
+    options = {};
+  }
 
-  } else {
-    for (var k in DEFAULT_SORT_OPTIONS) {
-      if (typeof options[k] === 'undefined') {
-        options[k] = DEFAULT_SORT_OPTIONS[k];
-      }
+  for (var k in DEFAULT_SORT_OPTIONS) if (DEFAULT_SORT_OPTIONS.hasOwnProperty(k)) {
+    var v  = DEFAULT_SORT_OPTIONS[k];
+
+    if (!(k in options)) {
+      options[k] = v;
     }
   }
 

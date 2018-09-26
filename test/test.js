@@ -32,14 +32,14 @@ describe('main', function() {
   });
 
   it('Sort Array[number]', function() {
-    var sortedObj = sortedJSON.sortify([4, 0, 3, 1, 2]);
+    var sortedObj = sortedJSON.sortify([4, 0, 3, 1, 2], {sortArray: true});
     for (var i = 0; i < 5; i++) {
       assert.equal(sortedObj[i], i);
     }
   });
 
   it('Sort Array[string]', function() {
-    var sortedObj = sortedJSON.sortify(['e', 'd', 'c', 'a', 'b']);
+    var sortedObj = sortedJSON.sortify(['e', 'd', 'c', 'a', 'b'], {sortArray: true});
     for (var i = 0; i < 5; i++) {
       assert.equal(sortedObj[i], String.fromCharCode(i + 'a'.charCodeAt()));
     }
@@ -76,7 +76,7 @@ describe('main', function() {
       c: {a: null, b: null, c: null},
       d: [1, 2, 3, 4, 5],
     };
-    assert.equal(JSON.stringify(sortedJSON.sortify(objToSort)), JSON.stringify(expectedSortedJSON));
+    assert.equal(JSON.stringify(sortedJSON.sortify(objToSort, {sortArray: true})), JSON.stringify(expectedSortedJSON));
   });
 
   it('Sort nested JSON (sortKey)', function() {
