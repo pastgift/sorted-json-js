@@ -5,7 +5,7 @@ Sort keys and array elements in a JSON.
 ## Quick Example:
 
 ```js
-var sortedJSON = require('./sorted-json');
+var sortedJSON = require('sorted-json');
 
 var obj = {
   numberArray: [3, 1, 2],
