@@ -1,9 +1,9 @@
 {
   "name": "sorted-json",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "main": "sorted-json.js",
   "devDependencies": {
-    "mocha": "2.0.1"
+    "mocha": "6.0.2"
   },
   "scripts": {
     "test": "mocha"
