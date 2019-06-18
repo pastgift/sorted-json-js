@@ -1,6 +1,6 @@
 {
   "name": "sorted-json",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "main": "sorted-json.js",
   "devDependencies": {
     "mocha": "6.0.2"

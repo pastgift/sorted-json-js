@@ -3,7 +3,7 @@
 var DEBUG = false;
 var NON_SORTABLE_TYPES = ['undefined', 'string', 'number', 'boolean', 'function'];
 var DEFAULT_SORT_OPTIONS = {
-  sortBy   : null,
+  sortBy   : undefined,
   sortKey  : true,
   sortArray: false,
 

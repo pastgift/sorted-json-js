@@ -57,13 +57,13 @@ An object which defaults to
 
 ```js
 {
-  sortBy   : null,  // Specifies a function that defines the sort order. Same to `compareFunction` parameter in `Array.prototype.sort(compareFunction)`
-  sortKey  : true,  // Sort the keys in `obj` or not
-  sortArray: true,  // Sort the array elements in `obj or not
+  sortBy   : undefined, // Specifies a function that defines the sort order. Same to `compareFunction` parameter in `Array.prototype.sort(compareFunction)`
+  sortKey  : true,      // Sort the keys in `obj` or not
+  sortArray: true,      // Sort the array elements in `obj or not
 
-  stringify: false, // Output the stringified `obj` or not (Using `JSON.stringify()`)
-  replacer : null,  // Parameter for `JSON.stringify()`
-  space    : null,  // Parameter for `JSON.stringify()`
+  stringify: false,     // Output the stringified `obj` or not (Using `JSON.stringify()`)
+  replacer : null,      // Parameter for `JSON.stringify()`
+  space    : null,      // Parameter for `JSON.stringify()`
 }
 ```
 
