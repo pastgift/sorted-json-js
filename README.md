@@ -2,12 +2,14 @@
 
 Sort keys and array elements in a JSON.
 
-## Quick Example:
+## Quick Example 1:
+
+Using `.sortify(...)` with `{ sortArray: true }` options to sort an object:
 
 ```js
 var sortedJSON = require('sorted-json');
 
-var obj = {
+var obj_1 = {
   numberArray: [3, 1, 2],
   anotherJSON: {
     stringArray: ['cat', 'book', 'apple'],
@@ -17,65 +19,66 @@ var obj = {
   number1: 2,
   number2: 1
 };
-
-var sortedObj = sortedJSON.sortify(obj);
-console.log(JSON.stringify(sortedObj, null, '  '));
-
-/* Output:
-  {
-    "anotherJSON": {
-      "numberA": 2,
-      "numberB": 1,
-      "stringArray": [
-        "apple",
-        "book",
-        "cat"
-      ]
-    },
-    "number1": 2,
-    "number2": 1,
-    "numberArray": [
-      1,
-      2,
-      3
-    ]
-  }
-*/
+console.log(sortedJSON.sortify(obj_1, { sortArray: true }));
 ```
 
-# Functions:
+Output:
 
-### sortify(obj [, options])
-
-###### obj (object)
-
-The object to sort
-
-###### options (object)
-
-An object which defaults to
-
-```js
+```text
 {
-  sortBy   : undefined, // Specifies a function that defines the sort order. Same to `compareFunction` parameter in `Array.prototype.sort(compareFunction)`
-  sortKey  : true,      // Sort the keys in `obj` or not
-  sortArray: true,      // Sort the array elements in `obj or not
-
-  stringify: false,     // Output the stringified `obj` or not (Using `JSON.stringify()`)
-  replacer : null,      // Parameter for `JSON.stringify()`
-  space    : null,      // Parameter for `JSON.stringify()`
+  anotherJSON: { numberA: 2, numberB: 1, stringArray: [ 'apple', 'book', 'cat' ] },
+  number1: 2,
+  number2: 1,
+  numberArray: [ 1, 2, 3 ]
 }
 ```
 
-### stringify(obj, compareFunction) ***DEPRECATED***
+## Quick Example 2:
 
-###### obj (object)
+Using `.stringify(...)` to get a sorted JSON string:
 
-The object to sort
+```js
+var obj_2 = {
+  numberArray: [3, 1, 2],
+  anotherJSON: {
+    stringArray: ['cat', 'book', 'apple'],
+    numberA: 2,
+    numberB: 1
+  },
+  number1: 2,
+  number2: 1
+};
+console.log(sortedJSON.stringify(obj_2));
+```
 
-###### compareFunction (function)
+Output:
 
-Specifies a function that defines the sort order. Same to `compareFunction` parameter in `Array.prototype.sort(compareFunction)`.
+```text
+{"anotherJSON":{"numberA":2,"numberB":1,"stringArray":["cat","book","apple"]},"number1":2,"number2":1,"numberArray":[3,1,2]}
+```
+
+# API:
+
+### .sortify(obj [, options])
+
+Sort an object and return it.
+
+| Parameter           | Type     | Required | Default     | Description                                                                                                                      |
+| ------------------- | -------- | -------- | ----------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| `obj`               | object   | Yes      |             | The object to sort                                                                                                               |
+| `options`           | object   |          | `{}`        | Sort options                                                                                                                     |
+| `options.sortBy`    | function |          | `undefined` | Specifies a function that defines the sort order. Same to `compareFunction` parameter in `Array.prototype.sort(compareFunction)` |
+| `options.sortKey`   | boolean  |          | `true`      | Sort the keys in `obj` or not                                                                                                    |
+| `options.sortArray` | boolean  |          | `true`      | Sort the array elements in `obj or not                                                                                           |
+| `options.stringify` | boolean  |          | `false`     | Output the stringified `obj` or not (Using `JSON.stringify()`)                                                                   |
+| `options.replacer`  |          |          |             | Parameter for `JSON.stringify()`                                                                                                 |
+| `options.space`     |          |          |             | Parameter for `JSON.stringify()`                                                                                                 |
+
+### .stringify(obj)
+
+| Parameter | Type   | Required | Default | Description        |
+| --------- | ------ | -------- | ------- | ------------------ |
+| `obj`     | object | Yes      |         | The object to sort |
 
 # Install:
 

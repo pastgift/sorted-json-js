@@ -1,6 +1,5 @@
 'use strict'
 
-var DEBUG = false;
 var NON_SORTABLE_TYPES = ['undefined', 'string', 'number', 'boolean', 'function'];
 var DEFAULT_SORT_OPTIONS = {
   sortBy   : undefined,
@@ -59,7 +58,7 @@ var _sortify = function(obj, options) {
   }
 };
 
-exports.sortify = function(obj, options) {
+var sortify = function(obj, options) {
   if (!options) {
     options = {};
   }
@@ -80,55 +79,9 @@ exports.sortify = function(obj, options) {
   return result;
 };
 
-/* Deprecated Code below */
-var _stringify = function(obj, compareFunction) {
-  if (typeof obj == 'string') {
-    return '"' + obj + '"';
-  }
-  else if (typeof obj == 'number') {
-    return obj;
-  }
-  else if (typeof obj == 'boolean') {
-    return obj;
-  }
-  else if (typeof obj == 'function') {
-    return '"<FUNCTION>"';
-  }
-  else if (typeof obj == 'object') {
-    if (Array.isArray(obj)) {
-      var parts = [];
-      for (var i = 0; i < obj.length; i++) {
-        var v = exports.stringify(obj[i], compareFunction);
-        parts.push(v);
-      }
-
-      return '[' + parts.join(',') + ']';
-    }
-    else {
-      var keyList = [];
-      for (var k in obj) {
-        keyList.push(k);
-      }
-      keyList.sort(compareFunction);
-
-      var parts = [];
-      for (var i = 0; i < keyList.length; i++) {
-        var k = keyList[i];
-        var v = exports.stringify(obj[k], compareFunction);
-
-        parts.push('"' + k + '":' + v);
-      }
-      return '{' + parts.join(',') + '}';
-    }
-  }
-  else {
-    return '"<UNKNOW>"';
-  }
+var stringify = function(obj) {
+  return sortify(obj, { stringify: true });
 };
 
-exports.stringify = function(obj, compareFunction) {
-  console.log("The stringify() function is DEPRECATED. Please use sortify() instead.");
-
-  return _stringify(obj, compareFunction);
-};
-
+exports.sortify = sortify;
+exports.stringify = stringify;
